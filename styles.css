@@ -1,0 +1,426 @@
+/* Ajusto algunos valores predeterminados */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables de colores */
+:root {
+  --background1: #fff;
+  --background2: #dfe9eb;
+  --background3: #516f75;
+  --text-cover: #fff;
+  --text-primary: #212121;
+  --text-secondary: #6f7498;
+  --text-title: #3d7684;
+  --width-header: 250px;
+}
+
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v51-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Estilos generales del cuerpo de la página */
+body {
+  font-family: 'Open Sans', Arial;
+  background-color: var(--background1);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: block;
+  flex-direction: column;
+  line-height: 1.3;
+  /* La posición del body está cuando después de la barra de navegación */
+  position: absolute;
+  left: var(--width-header);
+}
+
+h1 {
+  color: var(--text-title);
+  font-family: 'Roboto', Arial;
+  font-size: 40pt;
+}
+h2 {
+  color: var(--text-title);
+  font-family: 'Roboto', Arial;
+  font-size: 26pt;
+}
+h3 {
+  color: var(--text-title);
+  font-family: 'Roboto', Arial;
+  font-size: 18pt;
+  line-height: 1.56;
+}
+h4 {
+  color: var(--text-title);
+  font-family: 'Roboto', Arial;
+  font-size: 13pt;
+  line-height: 1.63;
+}
+
+/* Barra de Navegación */
+body > header {
+  position: fixed;
+  left: 0;
+  padding: 1rem;
+  height: 100%;
+  width: var(--width-header);
+  border-right: 1px solid var(--background2);
+  background-color: var(--background1);
+  overflow: auto;
+
+  a {
+    text-decoration: none;
+  }
+  
+  .brand {  /* Logo y nombre del header */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-bottom: 1px solid var(--text-title);
+    padding-bottom: 1rem;
+
+    img {   /* logo del header */
+      margin: 2.5rem 0rem;
+      width: 40px;
+      height: 40px;
+    }
+
+    a {   /* nombre el header */
+      color: var(--text-title);
+      padding: 0rem 0.8rem;
+      h2 {
+        font-size: 20pt;
+      }
+    }
+  }
+
+  .navbar {    /* Menú de navegación */
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    
+    li > a, li > div > a {  /* Aplico un interlineado */
+      display: block;
+      padding: 0.5rem 0rem;
+      line-height: 1.5;
+    }
+
+    /* aplico sangría izquierda */
+    .pag, .subpag1-desp {
+      margin-left: 24px;
+    }
+    .subpag1, .subpag2 {
+      margin-left: 48px;
+    }
+
+    /* Hago que los desplegables esten alineados svg y texto */
+    .desp {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Oculto los puntos del ul */
+    ul {
+      list-style-type: none;
+    }
+
+    a {    /* Enlaces del header */
+      color: var(--text-secondary);
+    }
+
+    /* Destaco cuadno paso por encima o el que está activo */
+    a:hover, svg:hover, a:focus, svg:focus {
+      transition: color .4s;
+      color: var(--text-primary);
+    }
+
+    .active {
+      color: var(--text-primary);
+      pointer-events: none;
+    }
+  }
+}
+
+/* Portadas */
+main .cover {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  h1 {
+    width: 60%;
+    max-width: 800px;
+    position: relative;
+    color: var(--text-cover);
+    font-size: 45pt;
+
+    &::after {   /* Barra inferior del título */
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      padding-bottom: 20px;
+      height: 100%;
+      width: 100px;
+      border-bottom: 8px solid #53a7b8;
+
+    }
+  }
+
+  & > img {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    filter: brightness(0.75);
+  }
+}
+
+/* Pie de página */
+footer {
+  background-color: var(--background2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
+
+  svg {
+    color: var(--text-title);
+    height: 40px;
+    width: 40px;
+    margin: 0rem .5rem;
+    transition: all .3s;
+
+
+    &:hover, &:focus {
+      transition: all .3s;
+      transform: scale(1.2);
+    }
+  }
+  
+  p {
+    text-align: center;
+    color: var(--text-title);
+    font-weight: 900;
+    font-family: 'Roboto', Arial;
+    font-size: 13pt;
+    
+    a {
+      /* Evito que haga salto de página en el correo o número de teléfono */
+      white-space: nowrap; 
+      color: var(--text-title);
+
+    }
+  }
+}
+
+/* Subportada */
+main .subcover {
+  height: 400px;
+  background-color: var(--background2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 2.5;
+  
+  h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Estilos de index.html */
+main .identity {
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 5rem 3rem;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 12pt;
+    padding: 0rem 1rem;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+}
+
+/* Estilos de quienes-somos.html */
+main .structure {
+  background-color: var(--background1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 6rem 4rem;
+
+  h3 {
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    
+    img {
+      width: 40%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .quienes-somos-grupo {
+      object-position: right;
+    }
+    .quienes-somos-aga {
+      object-position: bottom right;
+      
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      text-align: justify;
+      
+    }
+
+    .a-button {
+      background-color: var(--background3);
+      color: #fff;
+      padding: .3rem .5rem;
+      text-decoration: none;
+      border-radius: .3rem;
+      display: block;
+      width: max-content;
+      margin-left: auto;
+      
+    }
+
+  }
+
+}
+
+/* Estilos de nuestra-historia.html */
+main .history {
+  margin: 6rem 4rem;
+
+  header {
+    h3 {
+      font-weight: 300;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      text-align: justify;
+      margin-bottom: 3rem;
+    }
+  }
+
+  article {
+    display: flex;
+    flex-direction: row;
+    gap: 7rem;
+    align-items: center;
+    margin: 4rem 0rem;
+    h1 {
+      font-size: 60pt;
+      font-weight: 900;
+    }
+    span {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: justify;
+    }
+  }
+}
+main .history-img {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 4rem;
+  padding-bottom: 4rem;
+  img {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    &:first-child {
+      object-position: 25% center;
+    }
+  }
+}
+
+main .nuestro-metodo {
+  padding: 0rem 4rem;
+  padding-top: 5rem;
+  margin-bottom: 2rem;
+  header {
+    h3 {
+      font-weight: 300;
+      line-height: 1.2;
+      margin: 2rem 0rem;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  main {
+    padding: 0rem 5rem;
+    img {
+      margin-bottom: 2rem;
+    }
+    p {
+      text-align: justify;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+      list-style: square;
+      li {
+        margin-bottom: .8rem;
+      }
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
