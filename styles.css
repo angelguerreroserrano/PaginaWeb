@@ -109,8 +109,11 @@ body > header {
     a {   /* nombre el header */
       color: var(--text-title);
       padding: 0rem 0.8rem;
-      h2 {
+      .brand-name {
+        color: var(--text-title);
+        font-family: 'Roboto', Arial;
         font-size: 20pt;
+        font-weight: 900;
       }
     }
   }
