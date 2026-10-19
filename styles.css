@@ -294,7 +294,6 @@ main .structure {
   div {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 2rem;
     margin-bottom: 3rem;
     
@@ -317,6 +316,13 @@ main .structure {
       margin-bottom: 1rem;
       text-align: justify;
       
+    }
+
+    div {
+      flex-direction: column;
+      gap: 0rem;
+      margin-bottom: 0rem;
+      align-items: normal;
     }
 
     .a-button {
@@ -361,7 +367,7 @@ main .history {
       font-size: 60pt;
       font-weight: 900;
     }
-    span {
+    div {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -401,7 +407,7 @@ main .nuestro-metodo {
   img {
     width: 100%;
   }
-  main {
+  div {
     padding: 0rem 5rem;
     img {
       margin-bottom: 2rem;
