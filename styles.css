@@ -48,27 +48,34 @@ body {
   left: var(--width-header);
 }
 
-h1 {
+h1 {  /* Usado como título principal de cada página en el cover */
   color: var(--text-title);
   font-family: 'Roboto', Arial;
   font-size: 40pt;
 }
-h2 {
+h2 {  /* Usado como títulos de las secciones principales de cada página */
+  color: var(--text-title);
+  font-family: 'Roboto', Arial;
+  font-size: 40pt;
+}
+h3 {
   color: var(--text-title);
   font-family: 'Roboto', Arial;
   font-size: 26pt;
 }
-h3 {
+h4 {
   color: var(--text-title);
   font-family: 'Roboto', Arial;
   font-size: 18pt;
   line-height: 1.56;
 }
-h4 {
+.subtitle {
   color: var(--text-title);
   font-family: 'Roboto', Arial;
-  font-size: 13pt;
-  line-height: 1.63;
+  font-size: 18pt;
+  line-height: 1.2;
+  font-style:italic;
+  font-weight: 300;
 }
 
 /* Barra de Navegación */
@@ -285,7 +292,7 @@ main .structure {
   justify-content: center;
   margin: 6rem 4rem;
 
-  h3 {
+  .subtitle {
     font-weight: 500;
     margin-top: 1rem;
     margin-bottom: 3rem;
@@ -309,7 +316,7 @@ main .structure {
       object-position: bottom right;
       
     }
-    h2 {
+    h3 {
       margin-bottom: 1rem;
     }
     p {
@@ -346,7 +353,7 @@ main .history {
   margin: 6rem 4rem;
 
   header {
-    h3 {
+    .subtitle {
       font-weight: 300;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
@@ -363,9 +370,14 @@ main .history {
     gap: 7rem;
     align-items: center;
     margin: 4rem 0rem;
-    h1 {
+    .year {
+      color: var(--text-title);
       font-size: 60pt;
       font-weight: 900;
+    }
+    h3 {  /* Propieddes del h4, aunque sea h3 */
+      font-size: 13pt;
+      line-height: 1.63;
     }
     div {
       display: flex;
@@ -396,12 +408,14 @@ main .history-img {
 main .nuestro-metodo {
   padding: 0rem 4rem;
   padding-top: 5rem;
-  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 2rem;
+  }
+  
   header {
-    h3 {
-      font-weight: 300;
-      line-height: 1.2;
-      margin: 2rem 0rem;
+    .subtitle {
+      margin-top: 1rem;
+      margin-bottom: 3rem;
     }
   }
   img {
@@ -428,5 +442,4 @@ main .nuestro-metodo {
       }
     }
   }
-
 }
