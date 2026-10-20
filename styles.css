@@ -31,7 +31,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/roboto-v51-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('./fonts/roboto-v51-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* Estilos generales del cuerpo de la página */
@@ -41,11 +41,10 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   display: block;
-  flex-direction: column;
   line-height: 1.3;
   /* La posición del body está cuando después de la barra de navegación */
   position: absolute;
-  left: var(--width-header);
+  margin-left: var(--width-header);
 }
 
 h1 {  /* Usado como título principal de cada página en el cover */
