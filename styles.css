@@ -92,8 +92,8 @@ h4 {
   font-weight: 300;
 }
 
-/* Barra de Navegación */
-body > header {
+/* -- BARRA DE NAVEGACIÓN -- */
+.menu {
   position: fixed;
   left: 0;
   padding: 1rem;
@@ -103,83 +103,77 @@ body > header {
   background-color: var(--background1);
   overflow: auto;
 
-  a {
-    text-decoration: none;
+  a {text-decoration: none;}
+}
+
+.brand {  /* Logo y nombre del header */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-bottom: 1px solid var(--text-title);
+  padding-bottom: 1rem;
+
+  img {   /* logo del header */
+    margin: 2.5rem 0rem;
+    width: 40px;
+    height: 40px;
   }
-  
-  .brand {  /* Logo y nombre del header */
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    border-bottom: 1px solid var(--text-title);
-    padding-bottom: 1rem;
 
-    img {   /* logo del header */
-      margin: 2.5rem 0rem;
-      width: 40px;
-      height: 40px;
-    }
-
-    a {   /* nombre el header */
+  a {   /* nombre el header */
+    color: var(--text-title);
+    padding: 0rem 0.8rem;
+    .brand__name {
       color: var(--text-title);
-      padding: 0rem 0.8rem;
-      .brand-name {
-        color: var(--text-title);
-        font-family: 'Roboto', Arial, sans-serif;
-        font-size: 20pt;
-        font-weight: 500;
-      }
-    }
-  }
-
-  .navbar {    /* Menú de navegación */
-    margin-top: 2rem;
-    color: var(--text-secondary);
-    
-    li > a, li > div > a {  /* Aplico un interlineado */
-      display: block;
-      padding: 0.5rem 0rem;
-      line-height: 1.5;
-    }
-
-    /* aplico sangría izquierda */
-    .pag, .subpag1-desp {
-      margin-left: 24px;
-    }
-    .subpag1, .subpag2 {
-      margin-left: 48px;
-    }
-
-    /* Hago que los desplegables esten alineados svg y texto */
-    .desp {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Oculto los puntos del ul */
-    ul {
-      list-style-type: none;
-    }
-
-    a {    /* Enlaces del header */
-      color: var(--text-secondary);
-    }
-
-    /* Destaco cuadno paso por encima o el que está activo */
-    a:hover, svg:hover, a:focus, svg:focus {
-      transition: color .4s;
-      color: var(--text-primary);
-    }
-
-    .active {
-      color: var(--text-primary);
-      pointer-events: none;
+      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 20pt;
+      font-weight: 500;
     }
   }
 }
 
+.index {    /* Menú de navegación */
+  margin-top: 2rem;
+  color: var(--text-secondary);
+
+  a {
+    display: block;
+    padding: 0.5rem 0rem;
+    line-height: 1.5;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  a {    /* Enlaces del header */
+    color: var(--text-secondary);
+  }
+
+  /* Destaco cuadno paso por encima o el que está activo */
+  a:hover, svg:hover, a:focus, svg:focus {
+    transition: color .4s;
+    color: var(--text-primary);
+  }
+
+  .active {
+    color: var(--text-primary);
+    pointer-events: none;
+  }
+}
+.index__list, .index__page {
+  padding-left: 24px;
+}
+.index__page--dropdown {
+  padding-left: 0px;
+}
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* Portadas */
-main .cover {
+.cover {
   height: 500px;
   display: flex;
   flex-direction: column;
