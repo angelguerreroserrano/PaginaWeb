@@ -17,26 +17,41 @@
   --width-header: 250px;
 }
 
-/* open-sans-regular - latin_latin-ext */
+/* Open Sans (variable) */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Open Sans';
+  src: url('./fonts/open-sans-variable.ttf') format('truetype');
+  font-weight: 300 800;   /* rango de grosores que ofrece la fuente */
   font-style: normal;
-  font-weight: 400;
-  src: url('./fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: swap;
 }
-/* roboto-regular - latin_latin-ext */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Open Sans';
+  src: url('./fonts/open-sans-variable-italic.ttf') format('truetype');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Roboto (variable) */
+@font-face {
   font-family: 'Roboto';
+  src: url('./fonts/roboto-variable.ttf') format('truetype');
+  font-weight: 100 900;
   font-style: normal;
-  font-weight: 400;
-  src: url('./fonts/roboto-v51-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/roboto-variable-italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* Estilos generales del cuerpo de la página */
 body {
-  font-family: 'Open Sans', Arial;
+  font-family: 'Open Sans', Arial, sans-serif;
   background-color: var(--background1);
   color: var(--text-primary);
   min-height: 100vh;
@@ -49,31 +64,31 @@ body {
 
 h1 {  /* Usado como título principal de cada página en el cover */
   color: var(--text-title);
-  font-family: 'Roboto', Arial;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 40pt;
 }
 h2 {  /* Usado como títulos de las secciones principales de cada página */
   color: var(--text-title);
-  font-family: 'Roboto', Arial;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 40pt;
 }
 h3 {
   color: var(--text-title);
-  font-family: 'Roboto', Arial;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 26pt;
 }
 h4 {
   color: var(--text-title);
-  font-family: 'Roboto', Arial;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 18pt;
   line-height: 1.56;
 }
 .subtitle {
   color: var(--text-title);
-  font-family: 'Roboto', Arial;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 18pt;
   line-height: 1.2;
-  font-style:italic;
+  font-style: italic;
   font-weight: 300;
 }
 
@@ -110,9 +125,9 @@ body > header {
       padding: 0rem 0.8rem;
       .brand-name {
         color: var(--text-title);
-        font-family: 'Roboto', Arial;
+        font-family: 'Roboto', Arial, sans-serif;
         font-size: 20pt;
-        font-weight: 900;
+        font-weight: 500;
       }
     }
   }
@@ -232,8 +247,8 @@ footer {
   p {
     text-align: center;
     color: var(--text-title);
-    font-weight: 900;
-    font-family: 'Roboto', Arial;
+    font-weight: 700;
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 13pt;
     
     a {
