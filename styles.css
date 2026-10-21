@@ -238,9 +238,7 @@ footer {
     }
   }
   
-  a {
-    text-decoration: none;
-  }
+  a {text-decoration: none;}
   
   p {
     text-align: center;
