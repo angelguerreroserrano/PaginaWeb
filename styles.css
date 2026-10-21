@@ -380,7 +380,7 @@ main .history {
     .year {
       color: var(--text-title);
       font-size: 60pt;
-      font-weight: 900;
+      font-weight: 700;
     }
     h3 {  /* Propieddes del h4, aunque sea h3 */
       font-size: 13pt;
