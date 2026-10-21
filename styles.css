@@ -7,9 +7,9 @@
 
 /* Variables de colores */
 :root {
-  --background1: #fff;
-  --background2: #dfe9eb;
-  --background3: #516f75;
+  --background: #fff;
+  --background-light: #dfe9eb;
+  --background-dark: #516f75;
   --text-cover: #fff;
   --text-primary: #212121;
   --text-secondary: #6f7498;
@@ -52,7 +52,7 @@
 /* Estilos generales del cuerpo de la página */
 body {
   font-family: 'Open Sans', Arial, sans-serif;
-  background-color: var(--background1);
+  background-color: var(--background);
   color: var(--text-primary);
   min-height: 100vh;
   display: block;
@@ -93,14 +93,14 @@ h4 {
 }
 
 /* -- BARRA DE NAVEGACIÓN -- */
-.menu {
+.menu {   /* Menú de navegación */
   position: fixed;
   left: 0;
   padding: 1rem;
   height: 100%;
   width: var(--width-header);
-  border-right: 1px solid var(--background2);
-  background-color: var(--background1);
+  border-right: 1px solid var(--background-light);
+  background-color: var(--background);
   overflow: auto;
 
   a {text-decoration: none;}
@@ -131,7 +131,7 @@ h4 {
   }
 }
 
-.index {    /* Menú de navegación */
+.index {    /* Índice de navegación */
   margin-top: 2rem;
   color: var(--text-secondary);
 
@@ -160,19 +160,15 @@ h4 {
     pointer-events: none;
   }
 }
-.index__list, .index__page {
-  padding-left: 24px;
-}
-.index__page--dropdown {
-  padding-left: 0px;
-}
+.index__list, .index__page {padding-left: 24px;}
+.index__page--dropdown {padding-left: 0px;}
 .dropdown {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-/* Portadas */
+/* -- PORTADA -- */
 .cover {
   height: 500px;
   display: flex;
@@ -214,9 +210,9 @@ h4 {
   }
 }
 
-/* Pie de página */
+/* -- PIE DE PÁGINA */
 footer {
-  background-color: var(--background2);
+  background-color: var(--background-light);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -257,7 +253,7 @@ footer {
 /* Subportada */
 main .subcover {
   height: 400px;
-  background-color: var(--background2);
+  background-color: var(--background-light);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -297,7 +293,7 @@ main .identity {
 
 /* Estilos de quienes-somos.html */
 main .structure {
-  background-color: var(--background1);
+  background-color: var(--background);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -344,7 +340,7 @@ main .structure {
     }
 
     .a-button {
-      background-color: var(--background3);
+      background-color: var(--background-dark);
       color: #fff;
       padding: .3rem .5rem;
       text-decoration: none;
