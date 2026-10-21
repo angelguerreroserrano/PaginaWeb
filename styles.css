@@ -66,16 +66,23 @@ h1 {  /* Usado como título principal de cada página en el cover */
   color: var(--text-cover);
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 3.75rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.26;
 }
 h2 {  /* Usado como títulos de las secciones principales de cada página */
   color: var(--text-title);
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 3.3rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
-h3 {
+h3 {  
   color: var(--text-title);
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 2.15rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 h4 {
   color: var(--text-title);
@@ -89,7 +96,7 @@ h4 {
   font-size: 1.5rem;
   line-height: 1.2;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* -- BARRA DE NAVEGACIÓN -- */
@@ -249,7 +256,7 @@ footer {
 }
 
 /* Subportada */
-main .subcover {
+.subcover {
   height: 400px;
   background-color: var(--background-light);
   text-align: center;
@@ -257,12 +264,9 @@ main .subcover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   line-height: 2.5;
   
-  h2 {
-    margin-bottom: 2rem;
-  }
+  h3 {margin-bottom: 2rem;}
 }
 
 /* Estilos de index.html */
@@ -298,7 +302,6 @@ main .structure {
   margin: 6rem 4rem;
 
   .subtitle {
-    font-weight: 500;
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
@@ -327,7 +330,6 @@ main .structure {
     p {
       margin-bottom: 1rem;
       text-align: justify;
-      
     }
 
     div {
