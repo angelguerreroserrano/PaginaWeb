@@ -91,19 +91,19 @@
   /* index.html · Misión, Visión y Valores */
   $$('.identity article').forEach((card, i) => {
     [...card.children].forEach((child, j) => {
-      mark([child], child.tagName === 'IMG' ? 'wipe' : 'up', { base: i * 140 + j * 70 });
+      mark([child], child.tagName === 'IMG' ? 'img' : 'up', { base: i * 140 + j * 70 });
     });
     watch([card]);
   });
 
-  /* quienes-somos.html · cada bloque: título, imagen que se destapa y texto que entra de lado */
+  /* quienes-somos.html · cada bloque: título, imagen que aparece y texto que entra de lado */
   $$('.structure article').forEach((article) => {
     const [title, subtitle, row] = article.children;
     mark([title], 'up');
     mark([subtitle], 'up', { base: 120 });
     const image = row.querySelector(':scope > img');
     const text = row.querySelector(':scope > div');
-    if (image) mark([image], 'wipe', { base: 250 });
+    if (image) mark([image], 'img', { base: 250 });
     if (text) mark([...text.children], 'right', { step: 110, base: 400 });
     watch([article]);
   });
@@ -132,7 +132,7 @@
 
   /* nuestra-historia.html · fotos finales */
   $$('.history-img').forEach((gallery) => {
-    mark($$('img', gallery), 'wipe-up', { step: 160 });
+    mark($$('img', gallery), 'img', { step: 150 });
     watch([gallery]);
   });
 
@@ -149,7 +149,7 @@
       if (el.tagName === 'UL') {
         mark([...el.children], 'left', { step: 90 });
       } else {
-        mark([el], el.tagName === 'IMG' ? 'wipe' : 'up');
+        mark([el], el.tagName === 'IMG' ? 'img' : 'up');
       }
       watch([el]);
     });
@@ -163,38 +163,7 @@
   });
 
   /* ------------------------------------------------------------------
-     3. INTERACTIVIDAD EN LAS IMÁGENES
-     ------------------------------------------------------------------ */
-
-  // Todas las imágenes de contenido se elevan al pasar el ratón
-  $$('.identity img, .structure img, .history-img img, .nuestro-metodo img')
-    .forEach((img) => img.classList.add('fx-img'));
-
-  // Las imágenes pequeñas además se inclinan en 3D siguiendo el ratón
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const MAX_TILT = 8; // grados
-    $$('.identity img, .structure img, .history-img img').forEach((img) => {
-      img.classList.add('tilt');
-
-      img.addEventListener('pointermove', (e) => {
-        const r = img.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        img.style.setProperty('--ry', `${x * MAX_TILT}deg`);
-        img.style.setProperty('--rx', `${-y * MAX_TILT}deg`);
-        img.classList.add('is-tilting');
-      });
-
-      img.addEventListener('pointerleave', () => {
-        img.classList.remove('is-tilting');
-        img.style.setProperty('--rx', '0deg');
-        img.style.setProperty('--ry', '0deg');
-      });
-    });
-  }
-
-  /* ------------------------------------------------------------------
-     4. SCROLL: barra de progreso y parallax de la portada
+     3. SCROLL: barra de progreso y parallax de la portada
      ------------------------------------------------------------------ */
   const bar = document.createElement('div');
   bar.className = 'scroll-progress';
@@ -229,7 +198,7 @@
   update();
 
   /* ------------------------------------------------------------------
-     5. SALIDA DE PÁGINA: el contenido se desvanece antes de cambiar
+     4. SALIDA DE PÁGINA: el contenido se desvanece antes de cambiar
      ------------------------------------------------------------------ */
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a[href]');

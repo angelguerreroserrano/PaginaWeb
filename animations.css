@@ -8,11 +8,9 @@
    LENGUAJE DE MOVIMIENTO (igual en todas las páginas)
    · Un único "momento estrella": la entrada de la portada (zoom + título).
    · Textos        → suben suavemente al aparecer (rv-up).
-   · Imágenes      → se destapan como una cortina (rv-wipe).
+   · Imágenes      → aparecen subiendo con fundido (rv-img), en cadena cuando
+                     hay varias juntas, y crecen al pasar el ratón.
    · Listas/grupos → entran escalonados, uno tras otro.
-   · Acento        → una barra de color #53a7b8 que "se dibuja": bajo el
-                     título de portada, bajo cada h2 y en la línea del tiempo.
-   · Interacción   → las imágenes se elevan y se inclinan con el ratón.
    ========================================================================== */
 
 :root {
@@ -131,8 +129,6 @@
      .is-visible cuando entran en pantalla. --d es el retardo (escalonado).
      ------------------------------------------------------------------ */
   .anim [data-reveal]:not(.is-visible) { opacity: 0; }
-  .anim [data-reveal="wipe"]:not(.is-visible)    { opacity: 1; clip-path: inset(0 100% 0 0); }
-  .anim [data-reveal="wipe-up"]:not(.is-visible) { opacity: 1; clip-path: inset(100% 0 0 0); }
 
   .anim [data-reveal].is-visible {
     animation-duration: 1s;
@@ -143,8 +139,11 @@
   .anim [data-reveal="up"].is-visible      { animation-name: rv-up; }
   .anim [data-reveal="left"].is-visible    { animation-name: rv-left; }
   .anim [data-reveal="right"].is-visible   { animation-name: rv-right; }
-  .anim [data-reveal="wipe"].is-visible    { animation-name: rv-wipe;    animation-duration: 1.3s; }
-  .anim [data-reveal="wipe-up"].is-visible { animation-name: rv-wipe-up; animation-duration: 1.3s; }
+  .anim [data-reveal="img"].is-visible {
+    animation-name: rv-img;
+    animation-duration: .9s;
+    animation-timing-function: ease;
+  }
   .anim [data-reveal="pop"].is-visible {
     animation-name: rv-pop;
     animation-duration: .7s;
@@ -154,36 +153,9 @@
   @keyframes rv-up    { from { opacity: 0; transform: translateY(32px); } }
   @keyframes rv-left  { from { opacity: 0; transform: translateX(-48px); } }
   @keyframes rv-right { from { opacity: 0; transform: translateX(48px); } }
-  @keyframes rv-wipe {
-    from { clip-path: inset(0 100% 0 0); transform: scale(1.06); }
-    to   { clip-path: inset(0 0 0 0);    transform: scale(1); }
-  }
-  @keyframes rv-wipe-up {
-    from { clip-path: inset(100% 0 0 0); transform: scale(1.06); }
-    to   { clip-path: inset(0 0 0 0);    transform: scale(1); }
-  }
+  @keyframes rv-img   { from { opacity: 0; transform: translateY(1.5rem); } }
   @keyframes rv-pop {
     from { opacity: 0; transform: scale(.3) rotate(-25deg); }
-  }
-
-  /* Barra de acento bajo los títulos: se dibuja cuando el título aparece */
-  .anim main h2::after,
-  .anim .subcover h3::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 5px;
-    margin-top: .6rem;
-    border-radius: 3px;
-    background: var(--accent);
-    scale: 0 1;
-    transform-origin: left;
-  }
-  .anim .subcover h3::after { margin-inline: auto; transform-origin: center; }
-  .anim main h2.is-visible::after,
-  .anim .subcover h3.is-visible::after {
-    scale: 1 1;
-    transition: scale .9s var(--ease) .35s;
   }
 
   /* ------------------------------------------------------------------
@@ -200,32 +172,7 @@
   }
   .anim .subcover:hover { --glow: 1; }
 
-  /* nuestra-historia.html · línea del tiempo que se dibuja entre hitos */
-  .anim .history article { position: relative; }
-  .anim .history article::before,
-  .anim .history article::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -2rem;
-    transform-origin: left;
-    scale: 0 1;
-    pointer-events: none;
-  }
-  .anim .history article::before {
-    width: 100%;
-    height: 2px;
-    background: var(--background-light);
-  }
-  .anim .history article::after {
-    width: 120px;
-    height: 4px;
-    margin-top: -1px;
-    border-radius: 2px;
-    background: var(--accent);
-  }
-  .anim .history article.is-visible::before { scale: 1 1; transition: scale 1.4s var(--ease); }
-  .anim .history article.is-visible::after  { scale: 1 1; transition: scale 1s var(--ease) .25s; }
+  /* nuestra-historia.html · los años no cambian de ancho mientras cuentan */
   .anim .history .year { font-variant-numeric: tabular-nums; }
 
   /* nuestro-metodo.html · los puntos de las listas reaccionan al ratón */
@@ -250,21 +197,25 @@
   }
 
   /* ------------------------------------------------------------------
-     4. IMÁGENES INTERACTIVAS (las clases las añade el JS)
+     4. HOVER DE LAS FOTOS (solo con ratón)
+     La foto crece con sombra; en la galería las demás se apagan un poco.
      ------------------------------------------------------------------ */
-  .anim .fx-img {
-    transition: translate .45s var(--ease), box-shadow .45s var(--ease);
-  }
-  .anim .fx-img:hover {
-    translate: 0 -6px;
-    box-shadow: 0 18px 36px -10px rgba(33, 33, 33, .35);
-  }
-  /* Inclinación 3D según dónde esté el ratón (solo ratón, no táctil) */
-  .anim .tilt {
-    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transition: transform .6s var(--ease), translate .45s var(--ease), box-shadow .45s var(--ease);
-  }
-  .anim .tilt.is-tilting {
-    transition: transform .12s linear, translate .45s var(--ease), box-shadow .45s var(--ease);
+  @media (hover: hover) {
+    .anim .identity img,
+    .anim .structure img,
+    .anim .history-img img,
+    .anim .nuestro-metodo img {
+      transition: transform .4s ease, box-shadow .4s ease, filter .4s ease;
+    }
+    .anim .identity img:hover,
+    .anim .structure img:hover,
+    .anim .history-img img:hover,
+    .anim .nuestro-metodo img:hover {
+      position: relative;
+      z-index: 1;
+      transform: scale(1.03);
+      box-shadow: 0 1rem 2rem rgb(0 0 0 / .25);
+    }
+    .anim .history-img:hover img:not(:hover) { filter: brightness(.8); }
   }
 }
