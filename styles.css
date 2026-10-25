@@ -525,7 +525,6 @@ main .nuestro-metodo {
   article {
     display: flex;
     flex-direction: column;
-    ali-items: center;
     gap: 1rem;
   }
 
